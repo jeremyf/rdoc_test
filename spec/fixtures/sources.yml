@@ -1,0 +1,40 @@
+---
+- :has_tests: true
+  :test_should_succeed: true
+  :source: |-
+    class UnitOne
+      class << self
+        # >> UnitOne.add
+        # => 4
+        def add
+          2 + 2
+        end
+      end
+    end
+- :has_tests: true
+  :test_should_succeed: false
+  :source: |-
+    class UnitTwo
+      # >> UnitTwo.add
+      # => nil
+      class << self
+        def add
+          2 + 2
+        end
+      end
+    end
+- :has_tests: false
+  :test_should_succeed: false
+  :source: |-
+    class UnitThree
+      def add
+        return 2 + 2
+      end
+    end
+- :has_tests: true
+  :test_should_succeed: false
+  :source: |-
+    class UnitFour
+      # >> UnitFour.new.stomp
+      # => nil
+    end
